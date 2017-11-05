@@ -39,11 +39,11 @@ function getDistanceFromLatLon(lat1, lon1, lat2, lon2) {
 const Map = ReactMapboxGl({
   attributionControl: false,
   doubleClickZoom: false,
-  touchZoomRotate: false,
+  touchZoomRotate: true,
   scrollZoom: false,
   dragPan: false,
   dragRotate: true,
-  keyboard: false,
+  keyboard: true,
   minZoom: zoom,
   logoPosition: 'bottom-right',
   maxZooom: zoom,
