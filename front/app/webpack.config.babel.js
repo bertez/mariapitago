@@ -88,6 +88,7 @@ module.exports = {
     publicPath: IS_PROD ? '/' : SCRIPT_PATH
   },
   module: {
+    noParse: /(mapbox-gl)\.js$/,
     rules: [
       {
         test: /\.jsx?$/,
