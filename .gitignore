@@ -1,0 +1,8 @@
+.DS_Store
+.env
+data
+!front/app/data
+back/node_modules
+front/app/node_modules
+front/app/public/*
+!front/app/public/media

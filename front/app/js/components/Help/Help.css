@@ -1,0 +1,18 @@
+.help {
+  background: radial-gradient(ellipse at center, #ffb243 0%,#ff9d00 100%);
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.helpContent {
+  flex-grow: 1;
+  background: white;
+  padding: 2rem;
+}
+
+.helpContent div {
+  border: 2px solid #6c2900;
+}

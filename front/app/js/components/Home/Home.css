@@ -1,0 +1,41 @@
+.home {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0 1rem;
+      box-sizing: border-box;
+      background: radial-gradient(ellipse at center, #ffb243 0%,#ff9d00 100%);
+      width: 100vw;
+      height: 100vh;
+      color: white;
+}
+
+.score {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: .7rem;
+}
+
+.title img {
+      max-width: 100%;
+}
+
+.front img {
+      max-width: 100%;
+}
+
+.link {
+      text-align: center;
+}
+
+.button {
+  composes: genericButton from '../Common/CommonStyles.css';
+
+}
+
+.credits {
+      text-align: center;
+      font-size: .7em;
+      line-height: 120%;
+      text-transform: uppercase;
+}

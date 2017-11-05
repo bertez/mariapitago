@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import 'normalize.css';
+
+:global(body) {
+  margin: 0;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Press Start 2P', cursive;
+}
+
+:global(html) {
+  height: 100%;
+}
+
+:global(*:focus) {
+  outline: none;
+}
