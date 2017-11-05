@@ -114,11 +114,11 @@ module.exports = {
         use: cssConfig
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
         use: {
           loader: 'file-loader',
           options: {
-            outputPath: 'public/media/',
+            outputPath: 'fonts/',
             publicPath: IS_PROD ? '/' : SCRIPT_PATH
           }
         }

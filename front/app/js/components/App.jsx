@@ -19,7 +19,7 @@ class App extends React.Component {
   logVisit() {
     const newState = St.updateState({
       ...this.state,
-      firstTime: false
+      firstTime: false,
     });
 
     this.setState(newState);
@@ -31,11 +31,18 @@ class App extends React.Component {
 
     const newState = St.updateState({
       ...this.state,
-      data
+      data,
     });
 
     this.setState(newState);
   }
+
+  reset() {
+    St.reset();
+    this.setState(St.getState());
+  }
+
+
 
   render() {
     const found = this.state.data.filter(d => d.found === true).length;
@@ -50,7 +57,12 @@ class App extends React.Component {
               exact
               path="/"
               component={props => {
-                return <Home score={score} />;
+                return (
+                  <Home
+                    score={score}
+                    firstTime={this.state.firstTime}
+                  />
+                );
               }}
             />
 
@@ -81,7 +93,33 @@ class App extends React.Component {
               }
             />
 
-            <Route exact path="/profile" component={Profile} />
+            <Route
+              exact
+              path="/help"
+              component={props => {
+                return (
+                  <Help
+                    logVisit={this.logVisit.bind(this)}
+                    score={score}
+                    {...props}
+                  />
+                );
+              }}
+            />
+
+            <Route
+              exact
+              path="/profile"
+              component={props => {
+                return (
+                  <Profile
+                    data={this.state.data}
+                    reset={this.reset.bind(this)}
+                    score={score}
+                  />
+                );
+              }}
+            />
           </section>
         </Router>
         <audio src="/media/music.mp3" autoPlay />

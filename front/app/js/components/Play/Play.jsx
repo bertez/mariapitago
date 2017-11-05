@@ -38,17 +38,17 @@ function getDistanceFromLatLon(lat1, lon1, lat2, lon2) {
 
 const Map = ReactMapboxGl({
   attributionControl: false,
-  doubleClickZoom: true,
-  touchZoomRotate: true,
-  scrollZoom: true,
-  dragPan: true,
+  doubleClickZoom: false,
+  touchZoomRotate: false,
+  scrollZoom: false,
+  dragPan: false,
   dragRotate: true,
-  keyboard: true,
+  keyboard: false,
   minZoom: zoom,
   logoPosition: 'bottom-right',
   maxZooom: zoom,
   accessToken:
-    'pk.eyJ1IjoiYmVydGV6IiwiYSI6ImNqOWw5MWF4YzFxaTUzMnA3d29sMG84amMifQ.QTdb7EzU5jkpgFA7cU8fqw'
+    'pk.eyJ1IjoiYmVydGV6IiwiYSI6ImNqOWw5MWF4YzFxaTUzMnA3d29sMG84amMifQ.QTdb7EzU5jkpgFA7cU8fqw',
 });
 
 class Play extends React.Component {
@@ -62,7 +62,7 @@ class Play extends React.Component {
       foundPopup: false,
       bearing: null,
       openPoints: [],
-      possiblePoints: []
+      possiblePoints: [],
     };
   }
 
@@ -75,7 +75,7 @@ class Play extends React.Component {
       {
         enableHighAccuracy: true,
         timeout: 5000,
-        maximumAge: 0
+        maximumAge: 0,
       }
     );
   }
@@ -95,22 +95,26 @@ class Play extends React.Component {
           coords.longitude,
           p.latitude,
           p.longitude
-        )
+        ),
       };
     });
 
     const possiblePoints = pointsDistance.filter(
       p => p.distance < 1000 && p.distance > 100 && !p.found
     );
+
     const openPoints = pointsDistance.filter(p => p.distance < 100 && !p.found);
-    const foundPoints = pointsDistance.filter(p => p.distance < 1000 && p.found);
+
+    const foundPoints = pointsDistance.filter(
+      p => p.distance < 1000 && p.found
+    );
 
     this.setState({
       center: [coords.longitude, coords.latitude],
       bearing: coords.heading,
       openPoints,
       possiblePoints,
-      foundPoints
+      foundPoints,
     });
   }
 
@@ -123,7 +127,7 @@ class Play extends React.Component {
         <Feature
           onClick={() =>
             this.setState({
-              possiblePopup: true
+              possiblePopup: true,
             })}
           key={`fp_${p.id}`}
           coordinates={c}
@@ -131,7 +135,14 @@ class Play extends React.Component {
       );
     });
 
-    return <Layer layout={{'icon-image': 'possible' }} images={['possible', possibleIcon]}>{possible}</Layer>;
+    return (
+      <Layer
+        layout={{ 'icon-image': 'possible' }}
+        images={['possible', possibleIcon]}
+      >
+        {possible}
+      </Layer>
+    );
   }
 
   getOpen() {
@@ -142,7 +153,7 @@ class Play extends React.Component {
         <Feature
           onClick={() => {
             this.setState({
-              foundPopup: p
+              foundPopup: p,
             });
           }}
           key={`fo_${p.id}`}
@@ -151,7 +162,11 @@ class Play extends React.Component {
       );
     });
 
-    return <Layer layout={{'icon-image': 'open' }} images={['open', openIcon]}>{open}</Layer>;
+    return (
+      <Layer layout={{ 'icon-image': 'open' }} images={['open', openIcon]}>
+        {open}
+      </Layer>
+    );
   }
 
   getFound() {
@@ -163,7 +178,11 @@ class Play extends React.Component {
       );
     });
 
-    return <Layer layout={{'icon-image': 'found' }} images={['found', foundIcon]}>{found}</Layer>;
+    return (
+      <Layer layout={{ 'icon-image': 'found' }} images={['found', foundIcon]}>
+        {found}
+      </Layer>
+    );
   }
 
   render() {
@@ -178,7 +197,7 @@ class Play extends React.Component {
             center={this.state.center}
             containerStyle={{
               height: '100vh',
-              width: '100vw'
+              width: '100vw',
             }}
           >
             {/* Layers */}
@@ -193,7 +212,7 @@ class Play extends React.Component {
           </Map>
         ) : (
           <div className={styles.loading}>
-            <div>Pensando...</div>
+            <div>...</div>
           </div>
         )}
 
@@ -205,7 +224,7 @@ class Play extends React.Component {
             actionText="Pechar"
             action={() =>
               this.setState({
-                possiblePopup: false
+                possiblePopup: false,
               })}
           />
         ) : null}
@@ -215,12 +234,13 @@ class Play extends React.Component {
             title={`${this.state.foundPopup.title}`}
             view={this.state.foundPopup.link}
             icon={this.state.foundPopup.id}
-            message={`${this.state.foundPopup.description} (${this.state.foundPopup.source})`}
+            message={`${this.state.foundPopup.description} (${this.state
+              .foundPopup.source})`}
             actionText="Marcar como visto"
             action={() => {
               this.props.logDiscover(this.state.foundPopup.id);
               this.setState({
-                foundPopup: null
+                foundPopup: null,
               });
             }}
           />
@@ -232,6 +252,9 @@ class Play extends React.Component {
 
         <Link to="/profile" className={styles.profile}>
           <img src="/media/profile.png" />
+        </Link>
+        <Link to="/" className={styles.home}>
+          <img src="/media/home.svg" />
         </Link>
       </section>
     );

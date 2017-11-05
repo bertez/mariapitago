@@ -1,5 +1,5 @@
 .help {
-  background: radial-gradient(ellipse at center, #ffb243 0%,#ff9d00 100%);
+  background: radial-gradient(ellipse at center, #ffb243 0%, #ff9d00 100%);
   text-align: center;
   width: 100vw;
   height: 100vh;
@@ -7,12 +7,35 @@
   flex-direction: column;
 }
 
+.help img {
+  position: relative;
+  margin-bottom: -1rem;
+}
+
 .helpContent {
   flex-grow: 1;
   background: white;
-  padding: 2rem;
+  padding: 1rem;
+  display: flex;
+
 }
 
 .helpContent div {
   border: 2px solid #6c2900;
+  flex-grow: 1;
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  line-height: 150%;
+}
+
+.footer {
+  background:  white;
+}
+
+.button {
+  composes: genericButton from '../Common/CommonStyles.css';
+  display: inline-block;
+  margin-bottom: 1rem;
 }

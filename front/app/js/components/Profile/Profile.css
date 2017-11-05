@@ -1,0 +1,78 @@
+.profile {
+  background: url('/media/perfil-bg-top.svg') no-repeat;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile header {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  text-align: center;
+}
+
+.headerTop {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-size: 0.7rem;
+  margin: 0.5rem 0;
+}
+
+.headerTop img {
+  height: 0.9rem;
+}
+
+.headerTop a {
+  color: white;
+  text-decoration: none;
+}
+
+.description {
+  font-family: 'Lato', sans-serif;
+  text-transform: none;
+  color: #777;
+}
+
+.score {
+  color: #6d2a04;
+  font-weight: bold;
+  margin: 0;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.secret {
+  margin: 0 1rem 1rem 1rem;
+  max-width: calc(50vw - 2rem);
+  position: relative;
+}
+
+.secret img {
+  width: 100%;
+}
+
+.cover {
+  position: absolute;
+  left: 0;
+}
+
+.secret p {
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  margin: 0.2rem 0;
+  font-size: 0.7rem;
+  color: #6d2a04;
+  font-weight: bold;
+}
+
+
+.forget {
+  composes: genericButton from '../Common/CommonStyles.css';
+  margin: 0 auto 2rem auto;
+  display: block;
+}

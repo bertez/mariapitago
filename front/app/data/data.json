@@ -1,21 +1,5 @@
 [
     {
-        "title": "Centro Ágora",
-        "type": "Gravado",
-        "date": 1589,
-        "theme": "Batallas históricas",
-        "description": "Retrato en gravado",
-        "source": "Arquivo do Reino de Galicia",
-        "author": "Alejandro Chao",
-        "license": "PD",
-        "place": "",
-        "gmapsLink": "https://goo.gl/maps/HZqh33BxZnp",
-        "link": "https://archive.org/details/00054_201711",
-        "latitude": 43.363542,
-        "longitude": -8.425999,
-        "id": 1
-    },
-    {
         "title": "María Pita",
         "type": "Gravado",
         "date": 1589,
@@ -313,7 +297,7 @@
             "https://www.dropbox.com/preview/LAIC/A%20Coru%C3%B1a%20Rebelde/rock%20rock%20rock.mp4?role=personal",
         "latitude": 43.368851,
         "longitude": -8.4186994,
-        "id": ""
+        "id": 18
     },
     {
         "title": "Manifestación Estatuto de Autonomía",

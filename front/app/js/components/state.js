@@ -2,23 +2,22 @@ import data from '../../data/data.json';
 
 const defaultState = {
   firstTime: true,
-  data
+  data,
 };
 
 class St {
   constructor() {
-    const savedState = localStorage.getItem('apatrullando');
+    const savedState = localStorage.getItem('mariapitago');
 
-    if(savedState) {
+    if (savedState) {
       this.state = JSON.parse(savedState);
     } else {
-      this.state = defaultState;
-      this.sync();
+      this.reset();
     }
   }
 
   sync() {
-    localStorage.setItem('apatrullando', JSON.stringify(this.state));
+    localStorage.setItem('mariapitago', JSON.stringify(this.state));
   }
 
   updateState(newState) {
@@ -29,6 +28,11 @@ class St {
 
   getState() {
     return this.state;
+  }
+
+  reset() {
+    this.state = Object.assign({}, defaultState);
+    this.sync();
   }
 }
 

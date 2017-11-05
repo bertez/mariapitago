@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import styles from './Home.css';
 
-const Home = ({score}) => (
+const Home = ({ score, firstTime, resetHelp }) => (
   <section className={styles.home}>
     <div className={styles.score}>SCORE {score}</div>
     <div className={styles.title}>
@@ -17,6 +17,17 @@ const Home = ({score}) => (
       <Link className={styles.button} to="/play">
         Comenzar
       </Link>
+
+      {!firstTime ? (
+        <div>
+          <Link
+            className={styles.help}
+            to="/help"
+          >
+            Axuda
+          </Link>
+        </div>
+      ) : null}
     </div>
     <p className={styles.credits}>
       Feito no hackaton de Coruña Dixital por Sara González, Daniel Pereyra e
